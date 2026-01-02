@@ -35,7 +35,7 @@ function RegisterPage({ setIsAuthenticated }) {
         
         setTimeout(() => {
           setIsAuthenticated(true)
-          navigate('/chat')
+          navigate('/quiz')
         }, 1500)
       } else {
         setError(data.message || 'Registration failed')

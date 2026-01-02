@@ -2,7 +2,8 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { useState, useEffect } from 'react'
 import LoginPage from './pages/LoginPage'
 import RegisterPage from './pages/RegisterPage'
-import ChatPage from './pages/ChatPage'
+import DashboardPage from './pages/DashboardPage'
+import PreferenceQuiz from './pages/PreferenceQuiz'
 
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
@@ -21,7 +22,7 @@ function App() {
 
   const PublicRoute = ({ children }) => {
     if (loading) return <div className="spinner"></div>
-    return !isAuthenticated ? children : <Navigate to="/chat" />
+    return !isAuthenticated ? children : <Navigate to="/dashboard" />
   }
 
   return (
@@ -44,14 +45,24 @@ function App() {
           }
         />
         <Route
-          path="/chat"
+          path="/quiz"
           element={
             <PrivateRoute>
-              <ChatPage setIsAuthenticated={setIsAuthenticated} />
+              <PreferenceQuiz setIsAuthenticated={setIsAuthenticated} />
             </PrivateRoute>
           }
         />
+        <Route
+          path="/dashboard"
+          element={
+            <PrivateRoute>
+              <DashboardPage setIsAuthenticated={setIsAuthenticated} />
+            </PrivateRoute>
+          }
+        />
+        <Route path="/chat" element={<Navigate to="/dashboard" replace />} />
         <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="*" element={<Navigate to="/login" replace />} />
       </Routes>
     </Router>
   )

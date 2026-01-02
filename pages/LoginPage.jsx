@@ -29,7 +29,7 @@ function LoginPage({ setIsAuthenticated }) {
         localStorage.setItem('token', data.token)
         localStorage.setItem('user', JSON.stringify(data.user))
         setIsAuthenticated(true)
-        navigate('/chat')
+        navigate('/dashboard')
       } else {
         setError(data.message || 'Login failed')
       }
