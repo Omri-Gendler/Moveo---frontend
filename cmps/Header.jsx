@@ -1,9 +1,9 @@
-function Header({ user, onLogout }) {
+function Header({ user, onLogout, scrolled, hideNavbar }) {
   return (
-    <nav className="navbar">
+    <nav className={`navbar ${scrolled ? 'scrolled' : ''} ${hideNavbar ? 'navbar-hidden' : ''}`}>
       <div className="nav-left">
         <div className="logo">
-          <span className="logo-icon">🤖</span>
+          <span className="logo-icon"><img src="/Img/moveo-logo.svg" alt="Moveo Logo" style={{ width: '50px', height: '50px', borderRadius: '50%' }} /></span>
           <span className="logo-text">AI Crypto Advisor</span>
         </div>
         <div className="nav-links">

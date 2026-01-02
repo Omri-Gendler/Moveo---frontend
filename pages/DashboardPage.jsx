@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Header from '../cmps/Header'
 import '../style/dashboard.css'
@@ -13,6 +13,9 @@ function DashboardPage({ setIsAuthenticated }) {
     meme: ''
   })
   const [feedback, setFeedback] = useState({})
+  const [scrolled, setScrolled] = useState(false)
+  const [hideNavbar, setHideNavbar] = useState(false)
+  const lastScrollY = useRef(0)
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -21,6 +24,33 @@ function DashboardPage({ setIsAuthenticated }) {
       setUser(JSON.parse(userData))
     }
     loadDashboardContent()
+  }, [])
+
+  useEffect(() => {
+    const handleScroll = (e) => {
+      const container = e.target
+      const currentScrollY = container.scrollTop
+
+      // Show shadow when scrolled
+      setScrolled(currentScrollY > 20)
+
+      // Hide/show navbar based on scroll direction
+      if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
+        // Scrolling down
+        setHideNavbar(true)
+      } else {
+        // Scrolling up
+        setHideNavbar(false)
+      }
+
+      lastScrollY.current = currentScrollY
+    }
+
+    const container = document.querySelector('.dashboard-container')
+    if (container) {
+      container.addEventListener('scroll', handleScroll)
+      return () => container.removeEventListener('scroll', handleScroll)
+    }
   }, [])
 
   const handleLogout = () => {
@@ -106,7 +136,12 @@ function DashboardPage({ setIsAuthenticated }) {
 
   return (
     <div className="dashboard-page">
-      <Header user={user} onLogout={handleLogout} />
+      <Header 
+        user={user} 
+        onLogout={handleLogout} 
+        scrolled={scrolled}
+        hideNavbar={hideNavbar}
+      />
       
       <div className="dashboard-container">
         <div className="dashboard-header-section">
