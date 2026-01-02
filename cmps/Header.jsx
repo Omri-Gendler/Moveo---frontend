@@ -1,3 +1,7 @@
+import SpaceDashboardIcon from '@mui/icons-material/SpaceDashboard';
+import BarChartIcon from '@mui/icons-material/BarChart';
+import LogoutIcon from '@mui/icons-material/Logout';
+
 function Header({ user, onLogout, scrolled, hideNavbar }) {
   return (
     <nav className={`navbar ${scrolled ? 'scrolled' : ''} ${hideNavbar ? 'navbar-hidden' : ''}`}>
@@ -8,31 +12,24 @@ function Header({ user, onLogout, scrolled, hideNavbar }) {
         </div>
         <div className="nav-links">
           <a href="#" className="nav-link active">
-            <span className="nav-icon">📊</span>
+            <span className="nav-icon"><SpaceDashboardIcon /></span>
             Dashboard
           </a>
           <a href="#" className="nav-link">
-            <span className="nav-icon">📈</span>
+            <span className="nav-icon"><BarChartIcon /></span>
             Analytics
-          </a>
-          <a href="#" className="nav-link">
-            <span className="nav-icon">⚙️</span>
-            Settings
           </a>
         </div>
       </div>
       <div className="nav-right">
-        <div className="search-box">
-          <span className="search-icon">🔍</span>
-          <input type="text" placeholder="Search..." />
-        </div>
         <div className="user-menu">
           <div className="user-avatar">
             {user?.name?.charAt(0).toUpperCase() || 'U'}
           </div>
-          <span className="user-name">{user?.name || 'User'}</span>
+          <span className="user-name">{user?.name || ''}</span>
           <button className="btn-logout" onClick={onLogout}>
-            Logout
+            <LogoutIcon />
+            
           </button>
         </div>
       </div>

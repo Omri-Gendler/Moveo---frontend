@@ -3,17 +3,17 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(135deg, var(--background) 0%, #1e293b 100%);
+    background: var(--binance-dark);
 }
 
 .auth-container {
-    background: var(--surface);
+    background: var(--binance-dark-grey);
     padding: 40px;
-    border-radius: 16px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    border-radius: 8px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
     width: 100%;
     max-width: 450px;
-    border: 1px solid var(--border);
+    border: 1px solid var(--binance-medium-grey);
 }
 
 .auth-header {
@@ -24,7 +24,7 @@
 .auth-header h1 {
     font-size: 32px;
     margin-bottom: 8px;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(135deg, var(--binance-yellow), #FCD535);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -97,7 +97,7 @@
 
 .progress-fill {
     height: 100%;
-    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    background: linear-gradient(135deg, var(--binance-yellow), #FCD535);
     transition: width 0.3s ease;
 }
 

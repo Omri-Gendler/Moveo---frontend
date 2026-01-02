@@ -1,6 +1,9 @@
 import { useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Header from '../cmps/Header'
+import { LineChart, Line, AreaChart, Area, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
+import { ThumbUp as ThumbUpIcon, ThumbDown as ThumbDownIcon, CurrencyBitcoin as CurrencyBitcoinIcon, Newspaper as NewspaperIcon } from '@mui/icons-material'
+import RefreshIcon from '@mui/icons-material/Refresh';
 import '../style/dashboard.css'
 
 function DashboardPage({ setIsAuthenticated }) {
@@ -96,9 +99,51 @@ function DashboardPage({ setIsAuthenticated }) {
         { id: 3, title: 'Major Institution Adopts Crypto Payments', source: 'Bloomberg', url: '#' }
       ],
       coins: [
-        { id: 'bitcoin', name: 'Bitcoin', symbol: 'BTC', price: 45234.56, change24h: 2.5 },
-        { id: 'ethereum', name: 'Ethereum', symbol: 'ETH', price: 3234.78, change24h: -1.2 },
-        { id: 'cardano', name: 'Cardano', symbol: 'ADA', price: 0.56, change24h: 5.3 }
+        {
+          id: 'bitcoin',
+          name: 'Bitcoin',
+          symbol: 'BTC',
+          price: 45234.56,
+          change24h: 2.5,
+          chartData: [
+            { time: '00:00', price: 44200 },
+            { time: '04:00', price: 44800 },
+            { time: '08:00', price: 44500 },
+            { time: '12:00', price: 45000 },
+            { time: '16:00', price: 44700 },
+            { time: '20:00', price: 45234 }
+          ]
+        },
+        {
+          id: 'ethereum',
+          name: 'Ethereum',
+          symbol: 'ETH',
+          price: 3234.78,
+          change24h: -1.2,
+          chartData: [
+            { time: '00:00', price: 3280 },
+            { time: '04:00', price: 3260 },
+            { time: '08:00', price: 3240 },
+            { time: '12:00', price: 3220 },
+            { time: '16:00', price: 3250 },
+            { time: '20:00', price: 3234 }
+          ]
+        },
+        {
+          id: 'cardano',
+          name: 'Cardano',
+          symbol: 'ADA',
+          price: 0.56,
+          change24h: 5.3,
+          chartData: [
+            { time: '00:00', price: 0.52 },
+            { time: '04:00', price: 0.53 },
+            { time: '08:00', price: 0.54 },
+            { time: '12:00', price: 0.55 },
+            { time: '16:00', price: 0.54 },
+            { time: '20:00', price: 0.56 }
+          ]
+        }
       ],
       aiInsight: 'Based on market trends, diversification across major cryptocurrencies remains a solid strategy. Consider DCA (Dollar Cost Averaging) for long-term positions.',
       meme: 'https://i.imgflip.com/7kqcfl.jpg'
@@ -136,13 +181,13 @@ function DashboardPage({ setIsAuthenticated }) {
 
   return (
     <div className="dashboard-page">
-      <Header 
-        user={user} 
-        onLogout={handleLogout} 
+      <Header
+        user={user}
+        onLogout={handleLogout}
         scrolled={scrolled}
         hideNavbar={hideNavbar}
       />
-      
+
       <div className="dashboard-container">
         <div className="dashboard-header-section">
           <div className="header-left">
@@ -152,155 +197,150 @@ function DashboardPage({ setIsAuthenticated }) {
           <div className="header-actions">
             <button className="btn-new-item">+ New Item</button>
             <button className="btn-refresh-icon" onClick={loadDashboardContent} title="Refresh">
-              🔄
+              <RefreshIcon />
             </button>
           </div>
         </div>
 
-        <div className="dashboard-table">
-          {/* Market News Section */}
-          <div className="table-section">
-            <div className="section-header">
-              <div className="section-title">
-                <span className="section-indicator green"></span>
-                <h2>📰 Market News</h2>
-              </div>
+        <div className="dashboard-grid">
+          {/* Coin Prices Cards with Charts */}
+          <div className="cards-section coins-section">
+            <div className="section-header-simple">
+              <h2><CurrencyBitcoinIcon /> Coin Prices</h2>
               <div className="vote-buttons">
-                <button 
-                  className={`vote-btn ${feedback.news === 'up' ? 'active' : ''}`}
-                  onClick={() => handleVote('news', feedback.news === 'up' ? null : 'up')}
-                >
-                  👍
-                </button>
-                <button 
-                  className={`vote-btn ${feedback.news === 'down' ? 'active' : ''}`}
-                  onClick={() => handleVote('news', feedback.news === 'down' ? null : 'down')}
-                >
-                  👎
-                </button>
-              </div>
-            </div>
-            <div className="table-content">
-              {dashboardData.news.map((article, index) => (
-                <div key={article.id} className="table-row">
-                  <div className="row-color" style={{ background: ['#00c875', '#fdab3d', '#0073ea'][index % 3] }}></div>
-                  <div className="row-content">
-                    <a href={article.url} target="_blank" rel="noopener noreferrer">
-                      <span className="row-title">{article.title}</span>
-                      <span className="row-meta">{article.source}</span>
-                    </a>
-                  </div>
-                  <span className="status-badge trending">Trending</span>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* Coin Prices Section */}
-          <div className="table-section">
-            <div className="section-header">
-              <div className="section-title">
-                <span className="section-indicator yellow"></span>
-                <h2>💰 Coin Prices</h2>
-              </div>
-              <div className="vote-buttons">
-                <button 
+                <button
                   className={`vote-btn ${feedback.prices === 'up' ? 'active' : ''}`}
                   onClick={() => handleVote('prices', feedback.prices === 'up' ? null : 'up')}
                 >
-                  👍
+                  <ThumbUpIcon />
                 </button>
-                <button 
+                <button
                   className={`vote-btn ${feedback.prices === 'down' ? 'active' : ''}`}
                   onClick={() => handleVote('prices', feedback.prices === 'down' ? null : 'down')}
                 >
-                  👎
+                  <ThumbDownIcon />
                 </button>
               </div>
             </div>
-            <div className="table-content">
-              {dashboardData.coins.map((coin, index) => (
-                <div key={coin.id} className="table-row">
-                  <div className="row-color" style={{ background: ['#fdab3d', '#00c875', '#a25ddc'][index % 3] }}></div>
-                  <div className="row-content coin-row">
+            <div className="cards-grid">
+              {dashboardData.coins.map((coin) => (
+                <div key={coin.id} className="card coin-card">
+                  <div className="card-header">
                     <div className="coin-info">
-                      <span className="row-title">{coin.name}</span>
-                      <span className="row-meta">{coin.symbol}</span>
+                      <h3>{coin.name}</h3>
+                      <span className="coin-symbol">{coin.symbol}</span>
                     </div>
-                    <div className="coin-details">
-                      <span className="coin-price">${coin.price.toLocaleString()}</span>
-                      <span className={`status-badge ${coin.change24h >= 0 ? 'success' : 'error'}`}>
-                        {coin.change24h >= 0 ? '▲' : '▼'} {Math.abs(coin.change24h)}%
-                      </span>
-                    </div>
+                    <span className={`status-badge ${coin.change24h >= 0 ? 'success' : 'error'}`}>
+                      {coin.change24h >= 0 ? '▲' : '▼'} {Math.abs(coin.change24h)}%
+                    </span>
+                  </div>
+                  <div className="coin-price-display">
+                    ${coin.price.toLocaleString()}
+                  </div>
+                  <div className="chart-container">
+                    <ResponsiveContainer width="100%" height={80}>
+                      <AreaChart data={coin.chartData}>
+                        <defs>
+                          <linearGradient id={`gradient-${coin.id}`} x1="0" y1="0" x2="0" y2="1">
+                            <stop offset="5%" stopColor={coin.change24h >= 0 ? '#0ECB81' : '#F6465D'} stopOpacity={0.3} />
+                            <stop offset="95%" stopColor={coin.change24h >= 0 ? '#0ECB81' : '#F6465D'} stopOpacity={0} />
+                          </linearGradient>
+                        </defs>
+                        <Area
+                          type="monotone"
+                          dataKey="price"
+                          stroke={coin.change24h >= 0 ? '#0ECB81' : '#F6465D'}
+                          strokeWidth={2}
+                          fill={`url(#gradient-${coin.id})`}
+                          animationDuration={1000}
+                        />
+                      </AreaChart>
+                    </ResponsiveContainer>
                   </div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* AI Insight Section */}
-          <div className="table-section">
-            <div className="section-header">
-              <div className="section-title">
-                <span className="section-indicator blue"></span>
-                <h2>🤖 AI Insight of the Day</h2>
-              </div>
+          {/* Market News Card */}
+          <div className="card large-card news-card">
+            <div className="card-header-row">
+              <h2><NewspaperIcon /> Market News</h2>
               <div className="vote-buttons">
-                <button 
-                  className={`vote-btn ${feedback.insight === 'up' ? 'active' : ''}`}
-                  onClick={() => handleVote('insight', feedback.insight === 'up' ? null : 'up')}
+                <button
+                  className={`vote-btn ${feedback.news === 'up' ? 'active' : ''}`}
+                  onClick={() => handleVote('news', feedback.news === 'up' ? null : 'up')}
                 >
-                  👍
+                  <ThumbUpIcon />
                 </button>
-                <button 
-                  className={`vote-btn ${feedback.insight === 'down' ? 'active' : ''}`}
-                  onClick={() => handleVote('insight', feedback.insight === 'down' ? null : 'down')}
+                <button
+                  className={`vote-btn ${feedback.news === 'down' ? 'active' : ''}`}
+                  onClick={() => handleVote('news', feedback.news === 'down' ? null : 'down')}
                 >
-                  👎
+                  <ThumbDownIcon />
                 </button>
               </div>
             </div>
-            <div className="table-content">
-              <div className="table-row insight-row">
-                <div className="row-color blue"></div>
-                <div className="row-content">
-                  <p className="ai-insight">{dashboardData.aiInsight}</p>
-                </div>
-                <span className="status-badge priority-high">AI Generated</span>
-              </div>
+            <div className="news-list">
+              {dashboardData.news.map((article, index) => (
+                <a key={article.id} href={article.url} target="_blank" rel="noopener noreferrer" className="news-item">
+                  <div className="news-indicator" style={{ background: ['#0ECB81', '#F0B90B', '#3CBAFF'][index % 3] }}></div>
+                  <div className="news-content">
+                    <h4>{article.title}</h4>
+                    <span className="news-source">{article.source}</span>
+                  </div>
+                  <span className="status-badge trending">Trending</span>
+                </a>
+              ))}
             </div>
           </div>
 
-          {/* Fun Crypto Meme Section */}
-          <div className="table-section">
-            <div className="section-header">
-              <div className="section-title">
-                <span className="section-indicator pink"></span>
-                <h2>😂 Fun Crypto Meme</h2>
-              </div>
+          {/* AI Insight Card */}
+          <div className="card large-card insight-card">
+            <div className="card-header-row">
+              <h2> AI Insight of the Day</h2>
               <div className="vote-buttons">
-                <button 
-                  className={`vote-btn ${feedback.meme === 'up' ? 'active' : ''}`}
-                  onClick={() => handleVote('meme', feedback.meme === 'up' ? null : 'up')}
+                <button
+                  className={`vote-btn ${feedback.insight === 'up' ? 'active' : ''}`}
+                  onClick={() => handleVote('insight', feedback.insight === 'up' ? null : 'up')}
                 >
-                  👍
+                  <ThumbUpIcon />
                 </button>
-                <button 
-                  className={`vote-btn ${feedback.meme === 'down' ? 'active' : ''}`}
-                  onClick={() => handleVote('meme', feedback.meme === 'down' ? null : 'down')}
+                <button
+                  className={`vote-btn ${feedback.insight === 'down' ? 'active' : ''}`}
+                  onClick={() => handleVote('insight', feedback.insight === 'down' ? null : 'down')}
                 >
-                  👎
+                  <ThumbDownIcon />
                 </button>
               </div>
             </div>
-            <div className="table-content">
-              <div className="table-row meme-row">
-                <div className="row-color pink"></div>
-                <div className="row-content meme-content">
-                  <img src={dashboardData.meme} alt="Crypto Meme" className="meme-image" />
-                </div>
+            <div className="insight-content">
+              <p className="ai-insight-text">{dashboardData.aiInsight}</p>
+              <span className="status-badge priority-high">AI Generated</span>
+            </div>
+          </div>
+
+          {/* Fun Crypto Meme Card */}
+          <div className="card large-card meme-card">
+            <div className="card-header-row">
+              <h2>Fun Crypto Meme</h2>
+              <div className="vote-buttons">
+                <button
+                  className={`vote-btn ${feedback.meme === 'up' ? 'active' : ''}`}
+                  onClick={() => handleVote('meme', feedback.meme === 'up' ? null : 'up')}
+                >
+                  <ThumbUpIcon />
+                </button>
+                <button
+                  className={`vote-btn ${feedback.meme === 'down' ? 'active' : ''}`}
+                  onClick={() => handleVote('meme', feedback.meme === 'down' ? null : 'down')}
+                >
+                  <ThumbDownIcon />
+                </button>
               </div>
+            </div>
+            <div className="meme-content-card">
+              <img src={dashboardData.meme} alt="Crypto Meme" className="meme-image" />
             </div>
           </div>
         </div>
