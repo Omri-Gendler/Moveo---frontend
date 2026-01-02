@@ -1,7 +1,6 @@
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Header from '../cmps/Header'
-import { LineChart, Line, AreaChart, Area, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
 import ThumbUpOffAltOutlinedIcon from '@mui/icons-material/ThumbUpOffAltOutlined';
 import ThumbDownOffAltOutlinedIcon from '@mui/icons-material/ThumbDownOffAltOutlined';
 import { CurrencyBitcoin as CurrencyBitcoinIcon, Newspaper as NewspaperIcon } from '@mui/icons-material'
@@ -19,8 +18,6 @@ function DashboardPage({ setIsAuthenticated }) {
   })
   const [feedback, setFeedback] = useState({})
   const [scrolled, setScrolled] = useState(false)
-  const [hideNavbar, setHideNavbar] = useState(false)
-  const lastScrollY = useRef(0)
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -34,21 +31,7 @@ function DashboardPage({ setIsAuthenticated }) {
   useEffect(() => {
     const handleScroll = (e) => {
       const container = e.target
-      const currentScrollY = container.scrollTop
-
-      // Show shadow when scrolled
-      setScrolled(currentScrollY > 20)
-
-      // Hide/show navbar based on scroll direction
-      if (currentScrollY > lastScrollY.current && currentScrollY > 100) {
-        // Scrolling down
-        setHideNavbar(true)
-      } else {
-        // Scrolling up
-        setHideNavbar(false)
-      }
-
-      lastScrollY.current = currentScrollY
+      setScrolled(container.scrollTop > 20)
     }
 
     const container = document.querySelector('.dashboard-container')
@@ -107,44 +90,20 @@ function DashboardPage({ setIsAuthenticated }) {
           symbol: 'BTC',
           price: 45234.56,
           change24h: 2.5,
-          chartData: [
-            { time: '00:00', price: 44200 },
-            { time: '04:00', price: 44800 },
-            { time: '08:00', price: 44500 },
-            { time: '12:00', price: 45000 },
-            { time: '16:00', price: 44700 },
-            { time: '20:00', price: 45234 }
-          ]
         },
         {
           id: 'ethereum',
           name: 'Ethereum',
           symbol: 'ETH',
           price: 3234.78,
-          change24h: -1.2,
-          chartData: [
-            { time: '00:00', price: 3280 },
-            { time: '04:00', price: 3260 },
-            { time: '08:00', price: 3240 },
-            { time: '12:00', price: 3220 },
-            { time: '16:00', price: 3250 },
-            { time: '20:00', price: 3234 }
-          ]
+          change24h: -1.2
         },
         {
           id: 'cardano',
           name: 'Cardano',
           symbol: 'ADA',
           price: 0.56,
-          change24h: 5.3,
-          chartData: [
-            { time: '00:00', price: 0.52 },
-            { time: '04:00', price: 0.53 },
-            { time: '08:00', price: 0.54 },
-            { time: '12:00', price: 0.55 },
-            { time: '16:00', price: 0.54 },
-            { time: '20:00', price: 0.56 }
-          ]
+          change24h: 5.3
         }
       ],
       aiInsight: 'Based on market trends, diversification across major cryptocurrencies remains a solid strategy. Consider DCA (Dollar Cost Averaging) for long-term positions.',
@@ -187,7 +146,6 @@ function DashboardPage({ setIsAuthenticated }) {
         user={user}
         onLogout={handleLogout}
         scrolled={scrolled}
-        hideNavbar={hideNavbar}
       />
 
       <div className="dashboard-container">
@@ -204,7 +162,7 @@ function DashboardPage({ setIsAuthenticated }) {
         </div>
 
         <div className="dashboard-grid">
-          {/* Coin Prices Cards with Charts */}
+          {/* Coin Prices Cards */}
           <div className="cards-section coins-section">
             <div className="section-header-simple">
               <h2><CurrencyBitcoinIcon /> Coin Prices</h2>

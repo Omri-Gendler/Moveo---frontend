@@ -5,7 +5,6 @@
 }
 
 :root {
-    /* Binance-inspired color palette */
     --primary-color: #F0B90B;
     --primary-hover: #FCD535;
     --secondary-color: #181A20;
@@ -24,7 +23,6 @@
     --ai-message: #1E2329;
     --user-message: #2B3139;
     
-    /* Additional Binance colors */
     --binance-yellow: #F0B90B;
     --binance-dark: #0B0E11;
     --binance-dark-grey: #181A20;
@@ -117,7 +115,6 @@ input:focus, textarea:focus {
     box-shadow: 0 0 0 3px rgba(240, 185, 11, 0.1);
 }
 
-/* Error messages */
 .error-message {
     color: var(--error);
     font-size: 14px;
@@ -130,7 +127,6 @@ input:focus, textarea:focus {
     margin-top: 8px;
 }
 
-/* Loading spinner */
 .spinner {
     border: 3px solid var(--surface-light);
     border-top: 3px solid var(--primary-color);
@@ -146,7 +142,6 @@ input:focus, textarea:focus {
     100% { transform: rotate(360deg); }
 }
 
-/* Utility classes */
 .text-center {
     text-align: center;
 }

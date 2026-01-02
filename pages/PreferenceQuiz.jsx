@@ -97,7 +97,7 @@ function PreferenceQuiz({ setIsAuthenticated }) {
     <div className="auth-page">
       <div className="auth-container quiz-container">
         <div className="auth-header">
-          <h1>🎯 Personalize Your Experience</h1>
+          <h1> Personalize Your Experience</h1>
           <p>Help us understand your crypto journey</p>
         </div>
 
