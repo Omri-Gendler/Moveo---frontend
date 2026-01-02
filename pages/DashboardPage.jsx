@@ -2,7 +2,9 @@ import { useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Header from '../cmps/Header'
 import { LineChart, Line, AreaChart, Area, BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts'
-import { ThumbUp as ThumbUpIcon, ThumbDown as ThumbDownIcon, CurrencyBitcoin as CurrencyBitcoinIcon, Newspaper as NewspaperIcon } from '@mui/icons-material'
+import ThumbUpOffAltOutlinedIcon from '@mui/icons-material/ThumbUpOffAltOutlined';
+import ThumbDownOffAltOutlinedIcon from '@mui/icons-material/ThumbDownOffAltOutlined';
+import { CurrencyBitcoin as CurrencyBitcoinIcon, Newspaper as NewspaperIcon } from '@mui/icons-material'
 import RefreshIcon from '@mui/icons-material/Refresh';
 import '../style/dashboard.css'
 
@@ -195,7 +197,6 @@ function DashboardPage({ setIsAuthenticated }) {
             <p>Curated content based on your preferences</p>
           </div>
           <div className="header-actions">
-            <button className="btn-new-item">+ New Item</button>
             <button className="btn-refresh-icon" onClick={loadDashboardContent} title="Refresh">
               <RefreshIcon />
             </button>
@@ -212,13 +213,13 @@ function DashboardPage({ setIsAuthenticated }) {
                   className={`vote-btn ${feedback.prices === 'up' ? 'active' : ''}`}
                   onClick={() => handleVote('prices', feedback.prices === 'up' ? null : 'up')}
                 >
-                  <ThumbUpIcon />
+                  <ThumbUpOffAltOutlinedIcon />
                 </button>
                 <button
                   className={`vote-btn ${feedback.prices === 'down' ? 'active' : ''}`}
                   onClick={() => handleVote('prices', feedback.prices === 'down' ? null : 'down')}
                 >
-                  <ThumbDownIcon />
+                  <ThumbDownOffAltOutlinedIcon />
                 </button>
               </div>
             </div>
@@ -237,55 +238,34 @@ function DashboardPage({ setIsAuthenticated }) {
                   <div className="coin-price-display">
                     ${coin.price.toLocaleString()}
                   </div>
-                  <div className="chart-container">
-                    <ResponsiveContainer width="100%" height={80}>
-                      <AreaChart data={coin.chartData}>
-                        <defs>
-                          <linearGradient id={`gradient-${coin.id}`} x1="0" y1="0" x2="0" y2="1">
-                            <stop offset="5%" stopColor={coin.change24h >= 0 ? '#0ECB81' : '#F6465D'} stopOpacity={0.3} />
-                            <stop offset="95%" stopColor={coin.change24h >= 0 ? '#0ECB81' : '#F6465D'} stopOpacity={0} />
-                          </linearGradient>
-                        </defs>
-                        <Area
-                          type="monotone"
-                          dataKey="price"
-                          stroke={coin.change24h >= 0 ? '#0ECB81' : '#F6465D'}
-                          strokeWidth={2}
-                          fill={`url(#gradient-${coin.id})`}
-                          animationDuration={1000}
-                        />
-                      </AreaChart>
-                    </ResponsiveContainer>
-                  </div>
                 </div>
               ))}
             </div>
           </div>
 
-          {/* Market News Card */}
-          <div className="card large-card news-card">
-            <div className="card-header-row">
+          <div className="cards-section">
+            <div className="section-header-simple">
               <h2><NewspaperIcon /> Market News</h2>
               <div className="vote-buttons">
                 <button
                   className={`vote-btn ${feedback.news === 'up' ? 'active' : ''}`}
                   onClick={() => handleVote('news', feedback.news === 'up' ? null : 'up')}
                 >
-                  <ThumbUpIcon />
+                  <ThumbUpOffAltOutlinedIcon />
                 </button>
                 <button
                   className={`vote-btn ${feedback.news === 'down' ? 'active' : ''}`}
                   onClick={() => handleVote('news', feedback.news === 'down' ? null : 'down')}
                 >
-                  <ThumbDownIcon />
+                  <ThumbDownOffAltOutlinedIcon />
                 </button>
               </div>
             </div>
-            <div className="news-list">
+            <div className="news-cards-grid">
               {dashboardData.news.map((article, index) => (
-                <a key={article.id} href={article.url} target="_blank" rel="noopener noreferrer" className="news-item">
-                  <div className="news-indicator" style={{ background: ['#0ECB81', '#F0B90B', '#3CBAFF'][index % 3] }}></div>
-                  <div className="news-content">
+                <a key={article.id} href={article.url} target="_blank" rel="noopener noreferrer" className="card news-card-item">
+                  <div className="news-card-indicator" style={{ background: ['#0ECB81', '#F0B90B', '#3CBAFF'][index % 3] }}></div>
+                  <div className="news-card-content">
                     <h4>{article.title}</h4>
                     <span className="news-source">{article.source}</span>
                   </div>
@@ -304,13 +284,13 @@ function DashboardPage({ setIsAuthenticated }) {
                   className={`vote-btn ${feedback.insight === 'up' ? 'active' : ''}`}
                   onClick={() => handleVote('insight', feedback.insight === 'up' ? null : 'up')}
                 >
-                  <ThumbUpIcon />
+                  <ThumbUpOffAltOutlinedIcon />
                 </button>
                 <button
                   className={`vote-btn ${feedback.insight === 'down' ? 'active' : ''}`}
                   onClick={() => handleVote('insight', feedback.insight === 'down' ? null : 'down')}
                 >
-                  <ThumbDownIcon />
+                  <ThumbDownOffAltOutlinedIcon />
                 </button>
               </div>
             </div>
@@ -329,13 +309,13 @@ function DashboardPage({ setIsAuthenticated }) {
                   className={`vote-btn ${feedback.meme === 'up' ? 'active' : ''}`}
                   onClick={() => handleVote('meme', feedback.meme === 'up' ? null : 'up')}
                 >
-                  <ThumbUpIcon />
+                  <ThumbUpOffAltOutlinedIcon />
                 </button>
                 <button
                   className={`vote-btn ${feedback.meme === 'down' ? 'active' : ''}`}
                   onClick={() => handleVote('meme', feedback.meme === 'down' ? null : 'down')}
                 >
-                  <ThumbDownIcon />
+                  <ThumbDownOffAltOutlinedIcon />
                 </button>
               </div>
             </div>

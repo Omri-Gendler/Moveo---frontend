@@ -1,0 +1,58 @@
+/* Responsive Media Queries */
+
+@media (max-width: 1024px) {
+    .nav-links {
+        display: none;
+    }
+    
+    .dashboard-container {
+        padding: 24px 16px;
+    }
+}
+
+@media (max-width: 768px) {
+    .search-box {
+        display: none;
+    }
+    
+    .dashboard-header-section {
+        flex-direction: column;
+        gap: 24px;
+    }
+    
+    .header-left h1 {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .cards-grid {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    
+    .news-cards-grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .cards-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .card {
+        padding: 16px;
+    }
+    
+    .card-header-row {
+        padding: 16px;
+    }
+    
+    .news-cards-grid {
+        grid-template-columns: 1fr;
+    }
+}
