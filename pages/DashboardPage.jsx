@@ -110,135 +110,165 @@ function DashboardPage({ setIsAuthenticated }) {
       
       <div className="dashboard-container">
         <div className="dashboard-header-section">
-          <h1>Your Daily Crypto Dashboard</h1>
-          <p>Curated content based on your preferences</p>
+          <div className="header-left">
+            <h1>Your Daily Crypto Dashboard</h1>
+            <p>Curated content based on your preferences</p>
+          </div>
+          <div className="header-actions">
+            <button className="btn-new-item">+ New Item</button>
+            <button className="btn-refresh-icon" onClick={loadDashboardContent} title="Refresh">
+              🔄
+            </button>
+          </div>
         </div>
 
-        <div className="dashboard-grid">
-          <div className="dashboard-card">
-            <div className="card-header">
-              <h2>📰 Market News</h2>
+        <div className="dashboard-table">
+          {/* Market News Section */}
+          <div className="table-section">
+            <div className="section-header">
+              <div className="section-title">
+                <span className="section-indicator green"></span>
+                <h2>📰 Market News</h2>
+              </div>
               <div className="vote-buttons">
                 <button 
                   className={`vote-btn ${feedback.news === 'up' ? 'active' : ''}`}
                   onClick={() => handleVote('news', feedback.news === 'up' ? null : 'up')}
-                  title="Useful content"
                 >
                   👍
                 </button>
                 <button 
                   className={`vote-btn ${feedback.news === 'down' ? 'active' : ''}`}
                   onClick={() => handleVote('news', feedback.news === 'down' ? null : 'down')}
-                  title="Not useful"
                 >
                   👎
                 </button>
               </div>
             </div>
-            <div className="card-content">
-              {dashboardData.news.map(article => (
-                <div key={article.id} className="news-item">
-                  <a href={article.url} target="_blank" rel="noopener noreferrer">
-                    <h3>{article.title}</h3>
-                    <span className="news-source">{article.source}</span>
-                  </a>
+            <div className="table-content">
+              {dashboardData.news.map((article, index) => (
+                <div key={article.id} className="table-row">
+                  <div className="row-color" style={{ background: ['#00c875', '#fdab3d', '#0073ea'][index % 3] }}></div>
+                  <div className="row-content">
+                    <a href={article.url} target="_blank" rel="noopener noreferrer">
+                      <span className="row-title">{article.title}</span>
+                      <span className="row-meta">{article.source}</span>
+                    </a>
+                  </div>
+                  <span className="status-badge trending">Trending</span>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="dashboard-card">
-            <div className="card-header">
-              <h2>💰 Coin Prices</h2>
+          {/* Coin Prices Section */}
+          <div className="table-section">
+            <div className="section-header">
+              <div className="section-title">
+                <span className="section-indicator yellow"></span>
+                <h2>💰 Coin Prices</h2>
+              </div>
               <div className="vote-buttons">
                 <button 
                   className={`vote-btn ${feedback.prices === 'up' ? 'active' : ''}`}
                   onClick={() => handleVote('prices', feedback.prices === 'up' ? null : 'up')}
-                  title="Useful content"
                 >
                   👍
                 </button>
                 <button 
                   className={`vote-btn ${feedback.prices === 'down' ? 'active' : ''}`}
                   onClick={() => handleVote('prices', feedback.prices === 'down' ? null : 'down')}
-                  title="Not useful"
                 >
                   👎
                 </button>
               </div>
             </div>
-            <div className="card-content">
-              {dashboardData.coins.map(coin => (
-                <div key={coin.id} className="coin-item">
-                  <div className="coin-info">
-                    <span className="coin-name">{coin.name}</span>
-                    <span className="coin-symbol">{coin.symbol}</span>
-                  </div>
-                  <div className="coin-price-info">
-                    <span className="coin-price">${coin.price.toLocaleString()}</span>
-                    <span className={`coin-change ${coin.change24h >= 0 ? 'positive' : 'negative'}`}>
-                      {coin.change24h >= 0 ? '▲' : '▼'} {Math.abs(coin.change24h)}%
-                    </span>
+            <div className="table-content">
+              {dashboardData.coins.map((coin, index) => (
+                <div key={coin.id} className="table-row">
+                  <div className="row-color" style={{ background: ['#fdab3d', '#00c875', '#a25ddc'][index % 3] }}></div>
+                  <div className="row-content coin-row">
+                    <div className="coin-info">
+                      <span className="row-title">{coin.name}</span>
+                      <span className="row-meta">{coin.symbol}</span>
+                    </div>
+                    <div className="coin-details">
+                      <span className="coin-price">${coin.price.toLocaleString()}</span>
+                      <span className={`status-badge ${coin.change24h >= 0 ? 'success' : 'error'}`}>
+                        {coin.change24h >= 0 ? '▲' : '▼'} {Math.abs(coin.change24h)}%
+                      </span>
+                    </div>
                   </div>
                 </div>
               ))}
             </div>
           </div>
 
-          <div className="dashboard-card">
-            <div className="card-header">
-              <h2>🤖 AI Insight of the Day</h2>
+          {/* AI Insight Section */}
+          <div className="table-section">
+            <div className="section-header">
+              <div className="section-title">
+                <span className="section-indicator blue"></span>
+                <h2>🤖 AI Insight of the Day</h2>
+              </div>
               <div className="vote-buttons">
                 <button 
                   className={`vote-btn ${feedback.insight === 'up' ? 'active' : ''}`}
                   onClick={() => handleVote('insight', feedback.insight === 'up' ? null : 'up')}
-                  title="Useful content"
                 >
                   👍
                 </button>
                 <button 
                   className={`vote-btn ${feedback.insight === 'down' ? 'active' : ''}`}
                   onClick={() => handleVote('insight', feedback.insight === 'down' ? null : 'down')}
-                  title="Not useful"
                 >
                   👎
                 </button>
               </div>
             </div>
-            <div className="card-content">
-              <p className="ai-insight">{dashboardData.aiInsight}</p>
+            <div className="table-content">
+              <div className="table-row insight-row">
+                <div className="row-color blue"></div>
+                <div className="row-content">
+                  <p className="ai-insight">{dashboardData.aiInsight}</p>
+                </div>
+                <span className="status-badge priority-high">AI Generated</span>
+              </div>
             </div>
           </div>
 
-          <div className="dashboard-card">
-            <div className="card-header">
-              <h2>😂 Fun Crypto Meme</h2>
+          {/* Fun Crypto Meme Section */}
+          <div className="table-section">
+            <div className="section-header">
+              <div className="section-title">
+                <span className="section-indicator pink"></span>
+                <h2>😂 Fun Crypto Meme</h2>
+              </div>
               <div className="vote-buttons">
                 <button 
                   className={`vote-btn ${feedback.meme === 'up' ? 'active' : ''}`}
                   onClick={() => handleVote('meme', feedback.meme === 'up' ? null : 'up')}
-                  title="Useful content"
                 >
                   👍
                 </button>
                 <button 
                   className={`vote-btn ${feedback.meme === 'down' ? 'active' : ''}`}
                   onClick={() => handleVote('meme', feedback.meme === 'down' ? null : 'down')}
-                  title="Not useful"
                 >
                   👎
                 </button>
               </div>
             </div>
-            <div className="card-content meme-content">
-              <img src={dashboardData.meme} alt="Crypto Meme" className="meme-image" />
+            <div className="table-content">
+              <div className="table-row meme-row">
+                <div className="row-color pink"></div>
+                <div className="row-content meme-content">
+                  <img src={dashboardData.meme} alt="Crypto Meme" className="meme-image" />
+                </div>
+              </div>
             </div>
           </div>
         </div>
-
-        <button className="btn-refresh" onClick={loadDashboardContent}>
-          🔄 Refresh Dashboard
-        </button>
       </div>
     </div>
   )

@@ -5,26 +5,32 @@
 }
 
 :root {
-    --primary-color: #6366f1;
-    --primary-hover: #4f46e5;
-    --secondary-color: #8b5cf6;
-    --background: #0f172a;
-    --surface: #1e293b;
-    --surface-light: #334155;
-    --text-primary: #f1f5f9;
-    --text-secondary: #94a3b8;
-    --border: #334155;
-    --success: #10b981;
-    --error: #ef4444;
-    --ai-message: #1e293b;
-    --user-message: #6366f1;
+    --primary-color: #0073ea;
+    --primary-hover: #0060b9;
+    --secondary-color: #a25ddc;
+    --success-green: #00c875;
+    --warning-yellow: #fdab3d;
+    --error-red: #e44258;
+    --purple: #a25ddc;
+    --background: #f6f7fb;
+    --surface: #ffffff;
+    --surface-light: #f6f7fb;
+    --text-primary: #323338;
+    --text-secondary: #676879;
+    --border: #d0d4e4;
+    --success: #00c875;
+    --error: #e44258;
+    --ai-message: #f6f7fb;
+    --user-message: #0073ea;
 }
 
 body {
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    font-family: 'Figtree', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
     background: var(--background);
     color: var(--text-primary);
     line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 #app {
