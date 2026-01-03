@@ -57,22 +57,6 @@ A modern, intelligent cryptocurrency dashboard that delivers **personalized cont
 
 ---
 
-## 🤖 AI Tools Usage Summary
-
-In accordance with the task guidelines, I utilized AI tools (ChatGPT/Claude) to optimize development velocity given the 3-day timeframe. My goal was to focus on the core logic and architecture while offloading repetitive or styling-heavy tasks.
-
-**How I used AI:**
-* **UI/UX Styling:** Generated the complex CSS for the **Glassmorphism effects**, gradients, and the **background animations** (Keyframes) seen in the Auth and Dashboard pages. This saved significant time on visual polishing.
-* **Component Boilerplate:** Used AI to scaffold the initial **Recharts configuration** and component structures, allowing me to focus on data integration rather than library syntax.
-* **Mock Data Generation:** Generated the JSON datasets for the "Fallback Mode" (historical coin prices and news articles) to ensure the app looks rich even without API connection.
-* **Optimization Consultation:** Consulted AI on specific performance patterns, such as implementing the `useRef` logic for the scroll event listener to minimize re-renders.
-
-**My Contribution (Manual Work):**
-* Designed the overall **Application Architecture** and directory structure.
-* Implemented the **Authentication Flow** (JWT handling, Protected Routes).
-* Wrote the **Business Logic**: State management, API integration hooks, and the Optimistic UI updates for the voting system.
-* Debugging and connecting the Frontend to the Backend services.
-
 ## 🛠️ Tech Stack
 
 <div align="center">
@@ -215,3 +199,19 @@ As requested in the task guidelines, here is a **Read-Only** connection string t
 
 ```text
 mongodb+srv://moveo_guest:Moveo_Boost2026@stations.yvgiuub.mongodb.net/test?appName=stations
+
+## 🤖 AI Tools Usage Summary
+
+In accordance with the task guidelines, I utilized AI tools (ChatGPT/Claude) to optimize development velocity given the 3-day timeframe. My goal was to focus on the core logic and architecture while offloading repetitive or styling-heavy tasks.
+
+**How I used AI:**
+* **UI/UX Styling:** Generated the complex CSS for the **Glassmorphism effects**, gradients, and the **background animations** (Keyframes) seen in the Auth and Dashboard pages. This saved significant time on visual polishing.
+* **Component Boilerplate:** Used AI to scaffold the initial **Recharts configuration** and component structures, allowing me to focus on data integration rather than library syntax.
+* **Mock Data Generation:** Generated the JSON datasets for the "Fallback Mode" (historical coin prices and news articles) to ensure the app looks rich even without API connection.
+* **Optimization Consultation:** Consulted AI on specific performance patterns, such as implementing the `useRef` logic for the scroll event listener to minimize re-renders.
+
+**My Contribution (Manual Work):**
+* Designed the overall **Application Architecture** and directory structure.
+* Implemented the **Authentication Flow** (JWT handling, Protected Routes).
+* Wrote the **Business Logic**: State management, API integration hooks, and the Optimistic UI updates for the voting system.
+* Debugging and connecting the Frontend to the Backend services.
