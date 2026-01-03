@@ -199,19 +199,56 @@ As requested in the task guidelines, here is a **Read-Only** connection string t
 
 ```text
 mongodb+srv://moveo_guest:Moveo_Boost2026@stations.yvgiuub.mongodb.net/test?appName=stations
+```
+
+---
 
 ## 🤖 AI Tools Usage Summary
 
-In accordance with the task guidelines, I utilized AI tools (ChatGPT/Claude) to optimize development velocity given the 3-day timeframe. My goal was to focus on the core logic and architecture while offloading repetitive or styling-heavy tasks.
+In accordance with the task guidelines, I utilized AI tools (ChatGPT/GitHub Copilot) to optimize development velocity given the 3-day timeframe. My goal was to focus on the core logic and architecture while offloading repetitive or styling-heavy tasks.
 
-**How I used AI:**
-* **UI/UX Styling:** Generated the complex CSS for the **Glassmorphism effects**, gradients, and the **background animations** (Keyframes) seen in the Auth and Dashboard pages. This saved significant time on visual polishing.
-* **Component Boilerplate:** Used AI to scaffold the initial **Recharts configuration** and component structures, allowing me to focus on data integration rather than library syntax.
-* **Mock Data Generation:** Generated the JSON datasets for the "Fallback Mode" (historical coin prices and news articles) to ensure the app looks rich even without API connection.
-* **Optimization Consultation:** Consulted AI on specific performance patterns, such as implementing the `useRef` logic for the scroll event listener to minimize re-renders.
+<table>
+<tr>
+<td width="50%" valign="top">
 
-**My Contribution (Manual Work):**
-* Designed the overall **Application Architecture** and directory structure.
-* Implemented the **Authentication Flow** (JWT handling, Protected Routes).
-* Wrote the **Business Logic**: State management, API integration hooks, and the Optimistic UI updates for the voting system.
-* Debugging and connecting the Frontend to the Backend services.
+### 🎨 How I Used AI
+
+**UI/UX Styling**
+- Generated complex CSS for **Glassmorphism effects** and gradients
+- Created **background animations** (CSS keyframes) for Auth and Dashboard pages
+- Saved significant time on visual polishing
+
+**Component Boilerplate**
+- Scaffolded initial React component structures
+- Generated repetitive JSX patterns
+- Focused on data integration rather than library syntax
+
+**Optimization Consultation**
+- Consulted on performance patterns
+- Implemented `useRef` logic for scroll event listeners to minimize re-renders
+
+</td>
+<td width="50%" valign="top">
+
+### 💻 My Contribution (Manual Work)
+
+**Application Architecture**
+- ✅ Designed overall **application architecture** and directory structure
+- ✅ Planned component hierarchy and data flow
+
+**Authentication Flow**
+- ✅ Implemented **JWT handling** and token management
+- ✅ Created **Protected Routes** system
+- ✅ Built auth state management
+
+**Business Logic**
+- ✅ **State management** implementation with React hooks
+- ✅ **API integration** hooks and error handling
+- ✅ **Optimistic UI** updates for the voting system
+- ✅ Debugging and connecting Frontend to Backend services
+
+</td>
+</tr>
+</table>
+
+> **Development Philosophy:** AI tools accelerated styling and boilerplate generation, allowing me to concentrate on unique business logic, architecture decisions, and seamless system integration.
