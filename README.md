@@ -55,6 +55,64 @@ A modern, intelligent cryptocurrency dashboard that delivers **personalized cont
 - Trains recommendation engine
 - Improves future content
 
+</td>
+</tr>
+</table>
+
+> **🎯 Core Value:** Every user gets a unique, tailored experience based on their preferences and behavior.
+
+---
+
+## 🤖 AI Tools Usage Summary
+
+In accordance with the task guidelines, I utilized AI tools (ChatGPT/GitHub Copilot) to optimize development velocity given the 3-day timeframe. My goal was to focus on the core logic and architecture while offloading repetitive or styling-heavy tasks.
+
+<table>
+<tr>
+<td width="50%" valign="top">
+
+### 🎨 How I Used AI
+
+**UI/UX Styling**
+- Generated complex CSS for **Glassmorphism effects** and gradients
+- Created **background animations** (CSS keyframes) for Auth and Dashboard pages
+- Saved significant time on visual polishing
+
+**Component Boilerplate**
+- Scaffolded initial React component structures
+- Generated repetitive JSX patterns
+- Focused on data integration rather than library syntax
+
+**Optimization Consultation**
+- Consulted on performance patterns
+- Implemented `useRef` logic for scroll event listeners to minimize re-renders
+
+</td>
+<td width="50%" valign="top">
+
+### 💻 My Contribution (Manual Work)
+
+**Application Architecture**
+- ✅ Designed overall **application architecture** and directory structure
+- ✅ Planned component hierarchy and data flow
+
+**Authentication Flow**
+- ✅ Implemented **JWT handling** and token management
+- ✅ Created **Protected Routes** system
+- ✅ Built auth state management
+
+**Business Logic**
+- ✅ **State management** implementation with React hooks
+- ✅ **API integration** hooks and error handling
+- ✅ **Optimistic UI** updates for the voting system
+- ✅ Debugging and connecting Frontend to Backend services
+
+</td>
+</tr>
+</table>
+
+> **Development Philosophy:** AI tools accelerated styling and boilerplate generation, allowing me to concentrate on unique business logic, architecture decisions, and seamless system integration.
+
 ---
 
 ## 🛠️ Tech Stack
@@ -200,55 +258,3 @@ As requested in the task guidelines, here is a **Read-Only** connection string t
 ```text
 mongodb+srv://moveo_guest:Moveo_Boost2026@stations.yvgiuub.mongodb.net/test?appName=stations
 ```
-
----
-
-## 🤖 AI Tools Usage Summary
-
-In accordance with the task guidelines, I utilized AI tools (ChatGPT/GitHub Copilot) to optimize development velocity given the 3-day timeframe. My goal was to focus on the core logic and architecture while offloading repetitive or styling-heavy tasks.
-
-<table>
-<tr>
-<td width="50%" valign="top">
-
-### 🎨 How I Used AI
-
-**UI/UX Styling**
-- Generated complex CSS for **Glassmorphism effects** and gradients
-- Created **background animations** (CSS keyframes) for Auth and Dashboard pages
-- Saved significant time on visual polishing
-
-**Component Boilerplate**
-- Scaffolded initial React component structures
-- Generated repetitive JSX patterns
-- Focused on data integration rather than library syntax
-
-**Optimization Consultation**
-- Consulted on performance patterns
-- Implemented `useRef` logic for scroll event listeners to minimize re-renders
-
-</td>
-<td width="50%" valign="top">
-
-### 💻 My Contribution (Manual Work)
-
-**Application Architecture**
-- ✅ Designed overall **application architecture** and directory structure
-- ✅ Planned component hierarchy and data flow
-
-**Authentication Flow**
-- ✅ Implemented **JWT handling** and token management
-- ✅ Created **Protected Routes** system
-- ✅ Built auth state management
-
-**Business Logic**
-- ✅ **State management** implementation with React hooks
-- ✅ **API integration** hooks and error handling
-- ✅ **Optimistic UI** updates for the voting system
-- ✅ Debugging and connecting Frontend to Backend services
-
-</td>
-</tr>
-</table>
-
-> **Development Philosophy:** AI tools accelerated styling and boilerplate generation, allowing me to concentrate on unique business logic, architecture decisions, and seamless system integration.
