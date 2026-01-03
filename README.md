@@ -107,6 +107,11 @@ In accordance with the task guidelines, I utilized AI tools (ChatGPT/GitHub Copi
 - ✅ **Optimistic UI** updates for the voting system
 - ✅ Debugging and connecting Frontend to Backend services
 
+**Database & Deployment**
+- ✅ **MongoDB connection** setup and configuration
+- ✅ **Render.com deployment** configuration and troubleshooting
+- ✅ Environment variable management for prod/dev environments
+
 </td>
 </tr>
 </table>

@@ -164,42 +164,6 @@
     right: 32px;
 }
 
-.search-box {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--binance-medium-grey);
-    padding: 10px 16px;
-    border-radius: 8px;
-    border: 1px solid var(--binance-light-grey);
-    transition: all 0.3s ease;
-    backdrop-filter: blur(10px);
-}
-
-.search-box:focus-within {
-    border-color: var(--binance-yellow);
-    background: var(--binance-medium-grey);
-    box-shadow: 0 0 20px rgba(240, 185, 11, 0.2);
-}
-
-.search-icon {
-    font-size: 16px;
-    color: var(--text-secondary);
-}
-
-.search-box input {
-    border: none;
-    background: transparent;
-    outline: none;
-    font-size: 14px;
-    color: var(--text-primary);
-    width: 220px;
-}
-
-.search-box input::placeholder {
-    color: var(--text-secondary);
-}
-
 .user-menu {
     display: flex;
     align-items: center;
@@ -257,7 +221,6 @@
     transform: translateY(-2px);
 }
 
-/* Dashboard Container */
 .dashboard-container {
     flex: 1;
     max-width: 1600px;
@@ -298,40 +261,6 @@
     display: flex;
     gap: 16px;
     align-items: center;
-}
-
-.btn-new-item {
-    background: var(--binance-yellow);
-    color: var(--binance-dark);
-    padding: 14px 28px;
-    border-radius: 4px;
-    border: none;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    box-shadow: 0 8px 24px rgba(240, 185, 11, 0.3);
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-new-item::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), transparent);
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.btn-new-item:hover::before {
-    opacity: 1;
-}
-
-.btn-new-item:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 32px rgba(240, 185, 11, 0.5);
-    background: #FCD535;
 }
 
 .btn-refresh-icon {
@@ -425,7 +354,6 @@
     box-shadow: 0 4px 12px rgba(240, 185, 11, 0.2);
 }
 
-/* Loading */
 .loading-container {
     flex: 1;
     display: flex;
@@ -458,7 +386,6 @@
     }
 }
 
-/* Scrollbar */
 .dashboard-container::-webkit-scrollbar {
     width: 10px;
 }
@@ -476,7 +403,6 @@
     background: rgba(240, 185, 11, 0.5);
 }
 
-/* Card-Based Dashboard Layout */
 .dashboard-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -506,7 +432,6 @@
     gap: 12px;
 }
 
-/* Card Styling */
 .card {
     background: var(--binance-dark-grey);
     border: 1px solid var(--binance-medium-grey);
@@ -521,7 +446,6 @@
     box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
-/* Coin Card */
 .coin-card {
     display: flex;
     flex-direction: column;
@@ -560,10 +484,6 @@
     margin: 2px 0;
 }
 
-.chart-container {
-    margin-top: auto;
-}
-
 .card-header-row {
     display: flex;
     justify-content: space-between;
@@ -596,7 +516,6 @@
     border-left: 4px solid var(--binance-yellow);
 }
 
-/* Meme Card */
 .meme-content-card {
     padding: 24px;
     display: flex;

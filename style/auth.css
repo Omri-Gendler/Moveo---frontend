@@ -63,25 +63,6 @@
     text-decoration: underline;
 }
 
-.divider {
-    display: flex;
-    align-items: center;
-    text-align: center;
-    margin: 24px 0;
-    color: var(--text-secondary);
-}
-
-.divider::before,
-.divider::after {
-    content: '';
-    flex: 1;
-    border-bottom: 1px solid var(--border);
-}
-
-.divider span {
-    padding: 0 16px;
-}
-/* Quiz Specific Styles */
 .quiz-container {
     max-width: 600px;
 }

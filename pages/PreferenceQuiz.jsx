@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import '../style/auth.css'
 
-function PreferenceQuiz({ setIsAuthenticated }) {
+function PreferenceQuiz() {
   const navigate = useNavigate()
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [answers, setAnswers] = useState({})
@@ -69,7 +69,6 @@ function PreferenceQuiz({ setIsAuthenticated }) {
       })
 
       if (response.ok) {
-        // Update user data with preferences
         const userData = JSON.parse(localStorage.getItem('user'))
         userData.preferences = finalAnswers
         localStorage.setItem('user', JSON.stringify(userData))

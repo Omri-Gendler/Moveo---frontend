@@ -1,10 +1,7 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 import Header from '../cmps/Header'
-import ThumbUpOffAltOutlinedIcon from '@mui/icons-material/ThumbUpOffAltOutlined';
-import ThumbDownOffAltOutlinedIcon from '@mui/icons-material/ThumbDownOffAltOutlined';
-import { CurrencyBitcoin as CurrencyBitcoinIcon, Newspaper as NewspaperIcon } from '@mui/icons-material'
-import RefreshIcon from '@mui/icons-material/Refresh';
+import { ThumbUpOffAltOutlined as ThumbUpOffAltOutlinedIcon, ThumbDownOffAltOutlined as ThumbDownOffAltOutlinedIcon, CurrencyBitcoin as CurrencyBitcoinIcon, Newspaper as NewspaperIcon, Refresh as RefreshIcon } from '@mui/icons-material'
 import '../style/dashboard.css'
 
 function DashboardPage({ setIsAuthenticated }) {
@@ -26,19 +23,6 @@ function DashboardPage({ setIsAuthenticated }) {
       setUser(JSON.parse(userData))
     }
     loadDashboardContent()
-  }, [])
-
-  useEffect(() => {
-    const handleScroll = (e) => {
-      const container = e.target
-      setScrolled(container.scrollTop > 20)
-    }
-
-    const container = document.querySelector('.dashboard-container')
-    if (container) {
-      container.addEventListener('scroll', handleScroll)
-      return () => container.removeEventListener('scroll', handleScroll)
-    }
   }, [])
 
   const handleLogout = () => {
