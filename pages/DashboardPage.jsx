@@ -152,7 +152,6 @@ function DashboardPage({ setIsAuthenticated }) {
         <div className="dashboard-header-section">
           <div className="header-left">
             <h1>Your Daily Crypto Dashboard</h1>
-            <p>Curated content based on your preferences</p>
           </div>
           <div className="header-actions">
             <button className="btn-refresh-icon" onClick={loadDashboardContent} title="Refresh">
@@ -162,7 +161,6 @@ function DashboardPage({ setIsAuthenticated }) {
         </div>
 
         <div className="dashboard-grid">
-          {/* Coin Prices Cards */}
           <div className="cards-section coins-section">
             <div className="section-header-simple">
               <h2><CurrencyBitcoinIcon /> Coin Prices</h2>

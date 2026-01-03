@@ -13,14 +13,19 @@
     width: 200%;
     height: 200%;
     background: radial-gradient(circle at 20% 50%, rgba(240, 185, 11, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 80% 80%, rgba(240, 185, 11, 0.03) 0%, transparent 50%);
+        radial-gradient(circle at 80% 80%, rgba(240, 185, 11, 0.03) 0%, transparent 50%);
     animation: rotate 30s linear infinite;
     pointer-events: none;
 }
 
 @keyframes rotate {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
 }
 
 .navbar {
@@ -31,7 +36,7 @@
     height: 70px;
     border-bottom: 1px solid var(--binance-medium-grey);
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
     position: sticky;
@@ -56,18 +61,25 @@
     left: 0;
     right: 0;
     height: 1px;
-    background: linear-gradient(90deg, 
-        transparent 0%,
-        rgba(240, 185, 11, 0.3) 25%,
-        rgba(240, 185, 11, 0.6) 50%,
-        rgba(240, 185, 11, 0.3) 75%,
-        transparent 100%);
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(240, 185, 11, 0.3) 25%,
+            rgba(240, 185, 11, 0.6) 50%,
+            rgba(240, 185, 11, 0.3) 75%,
+            transparent 100%);
     animation: pulse 3s ease-in-out infinite;
 }
 
 @keyframes pulse {
-    0%, 100% { opacity: 0.5; }
-    50% { opacity: 1; }
+
+    0%,
+    100% {
+        opacity: 0.5;
+    }
+
+    50% {
+        opacity: 1;
+    }
 }
 
 .nav-left {
@@ -75,6 +87,8 @@
     align-items: center;
     gap: 48px;
     height: 100%;
+    position: absolute;
+    left: 32px;
 }
 
 .logo {
@@ -86,6 +100,7 @@
     color: var(--binance-yellow);
     text-shadow: 0 0 20px rgba(240, 185, 11, 0.3);
 }
+
 
 .logo-icon {
     filter: drop-shadow(0 0 10px rgba(240, 185, 11, 0.4));
@@ -145,6 +160,8 @@
     display: flex;
     align-items: center;
     gap: 24px;
+    position: absolute;
+    right: 32px;
 }
 
 .search-box {
@@ -318,8 +335,7 @@
 }
 
 .btn-refresh-icon {
-    background: var(--binance-medium-grey);
-    border: 1px solid var(--binance-light-grey);
+    background: transparent;
     width: 48px;
     height: 48px;
     border-radius: 10px;
@@ -330,6 +346,7 @@
     align-items: center;
     justify-content: center;
     backdrop-filter: blur(10px);
+    color: #ffffff8f;
 }
 
 .btn-refresh-icon:hover {
