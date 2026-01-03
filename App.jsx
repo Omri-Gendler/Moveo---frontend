@@ -8,6 +8,7 @@ import PreferenceQuiz from './pages/PreferenceQuiz'
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [loading, setLoading] = useState(true)
+  const isDevelopment = import.meta.env.NODE_ENV === 'development'
 
   useEffect(() => {
     const token = localStorage.getItem('token')
@@ -27,6 +28,23 @@ function App() {
 
   return (
     <Router>
+      {isDevelopment && (
+        <div style={{
+          position: 'fixed',
+          bottom: '10px',
+          right: '10px',
+          background: '#ff9800',
+          color: 'white',
+          padding: '8px 16px',
+          borderRadius: '4px',
+          fontSize: '12px',
+          fontWeight: 'bold',
+          zIndex: 9999,
+          boxShadow: '0 2px 8px rgba(0,0,0,0.2)'
+        }}>
+          DEV MODE
+        </div>
+      )}
       <Routes>
         <Route
           path="/login"
